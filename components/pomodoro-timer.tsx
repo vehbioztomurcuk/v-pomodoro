@@ -11,7 +11,7 @@ export default function PomodoroTimer() {
   const [completedPomodoros, setCompletedPomodoros] = useState(0)
 
   useEffect(() => {
-    let interval: NodeJS.Timeout | null = null
+    let interval: NodeJS.Timeout | undefined = undefined
 
     if (isActive) {
       interval = setInterval(() => {
@@ -21,7 +21,7 @@ export default function PomodoroTimer() {
           setMinutes(minutes - 1)
           setSeconds(59)
         } else {
-          clearInterval(interval)
+          if (interval) clearInterval(interval)
           if (isWork) {
             setCompletedPomodoros(prev => prev + 1)
             setMinutes(5) // 5-minute break
@@ -31,11 +31,13 @@ export default function PomodoroTimer() {
           setIsWork(!isWork)
         }
       }, 1000)
-    } else if (!isActive && seconds !== 0) {
+    } else if (!isActive && seconds !== 0 && interval) {
       clearInterval(interval)
     }
 
-    return () => clearInterval(interval)
+    return () => {
+      if (interval) clearInterval(interval)
+    }
   }, [isActive, minutes, seconds, isWork])
 
   const toggleTimer = () => {
