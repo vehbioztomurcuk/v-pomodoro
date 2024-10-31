@@ -52,22 +52,22 @@ export default function PomodoroTimer() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-80">
-        <h1 className="text-3xl font-bold mb-4 text-center">
+    <div className="min-h-screen flex items-center justify-center bg-slate-900">
+      <div className="bg-slate-800 p-8 rounded-lg shadow-xl w-80 border border-slate-700">
+        <h1 className="text-3xl font-bold mb-4 text-center text-white">
           {isWork ? 'Work' : 'Break'}
         </h1>
-        <div className="text-6xl font-bold mb-8 text-center">
+        <div className="text-6xl font-bold mb-8 text-center text-navy-100">
           {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
         </div>
         <div className="flex justify-center space-x-4 mb-8">
-          <Button onClick={toggleTimer} variant="outline">
+          <Button onClick={toggleTimer} variant="outline" className="text-white border-slate-600 hover:bg-slate-700">
             {isActive ? 'Pause' : 'Start'}
           </Button>
-          <Button onClick={resetTimer} variant="outline">Reset</Button>
+          <Button onClick={resetTimer} variant="outline" className="text-white border-slate-600 hover:bg-slate-700">Reset</Button>
         </div>
         <div className="text-center">
-          <p className="text-sm text-gray-600">Completed Pomodoros: {completedPomodoros}</p>
+          <p className="text-sm text-slate-400">Completed Pomodoros: {completedPomodoros}</p>
         </div>
       </div>
     </div>

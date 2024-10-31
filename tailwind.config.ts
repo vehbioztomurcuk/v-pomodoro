@@ -10,6 +10,11 @@ const config: Config = {
   theme: {
   	extend: {
   		colors: {
+  			navy: {
+  				100: '#C5E4FF',
+  				500: '#0047AB',
+  				900: '#002147',
+  			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
